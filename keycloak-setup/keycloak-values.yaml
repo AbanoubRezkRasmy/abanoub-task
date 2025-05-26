@@ -1,0 +1,50 @@
+auth:
+  adminUser: admin
+  adminPassword: admin123
+
+proxy: edge
+
+service:
+  type: LoadBalancer
+  port: 80
+
+ingress:
+  enabled: false
+
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: mysecretpassword
+  primary:
+    persistence:
+      enabled: false
+      storageClass: gp2
+      size: 8Gi
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 250m
+  limits:
+    memory: 1Gi
+    cpu: 500m
+
+replicaCount: 1
+
+securityContext:
+  enabled: true
+  fsGroup: 1001
+  runAsUser: 1001
+
+containerSecurityContext:
+  enabled: true
+  runAsUser: 1001
+
+livenessProbe:
+  enabled: true
+readinessProbe:
+  enabled: true
+
+metrics:
+  enabled: false
+

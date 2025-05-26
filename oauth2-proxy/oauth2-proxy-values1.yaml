@@ -1,0 +1,23 @@
+config:
+  clientID: flask-app
+  clientSecret: xMBvBZjkQBVWGSX5VbM7sNJaXtL3jqgX
+  cookieSecret: tFv0t6iIir21B0DH012PC6x8mLisDJnJal2G00DQ1OI=
+  provider: oidc
+  oidcIssuerURL: http://keycloak.default.svc.cluster.local/realms/master
+  redirectURL: http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/callback
+  emailDomains:
+    - "*"
+  cookieSecure: false
+  whitelistDomain: "*"
+
+extraArgs:
+  provider: oidc
+  oidc-issuer-url: http://keycloak.default.svc.cluster.local/realms/master
+  client-id: flask-app
+  client-secret: xMBvBZjkQBVWGSX5VbM7sNJaXtL3jqgX
+  cookie-secret: tFv0t6iIir21B0DH012PC6x8mLisDJnJal2G00DQ1OI=
+
+service:
+  portNumber: 4180
+
+

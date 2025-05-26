@@ -1,0 +1,30 @@
+config:
+  clientID: flask-app
+  clientSecret: xMBvBZjkQBVWGSX5VbM7sNJaXtL3jqgX
+  cookieSecret: tFv0t6iIir21B0DH012PC6x8mLisDJnJal2G00DQ1OI=
+  provider: keycloak
+  oidcIssuerURL: http://keycloak.default.svc.cluster.local/realms/master
+  emailDomains:
+    - "*"
+  cookieSecure: false
+  whitelistDomain: "*"
+  redirectURL: http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/callback
+
+extraArgs:
+  provider: oidc
+
+service:
+  portNumber: 4180
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/auth-signin: http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/start
+    nginx.ingress.kubernetes.io/auth-url: http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/auth
+  hosts:
+    - host: a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com
+      paths:
+        - path: /oauth2
+          pathType: Prefix
+

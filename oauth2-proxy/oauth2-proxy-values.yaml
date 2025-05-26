@@ -1,0 +1,33 @@
+extraArgs:
+  provider: oidc
+  oidc-issuer-url: http://ad904c01c5cc9475e85a33e79fb7085a-843788484.eu-west-1.elb.amazonaws.com/realms/flask-app
+  client-id: flask-app
+  client-secret: xMBvBZjkQBVWGSX5VbM7sNJaXtL3jqgX
+  redirect-url: http://ad904c01c5cc9475e85a33e79fb7085a-843788484.eu-west-1.elb.amazonaws.com/oauth2/callback
+  scope: "openid email profile"
+  standard-logging: true
+  request-logging: true
+  auth-logging: true
+
+config:
+  cookieSecret: tFv0t6iIir21B0DH012PC6x8mLisDJnJal2G00DQ1OI=
+  emailDomains:
+    - "*"
+  cookieSecure: false
+
+service:
+  portNumber: 4180
+
+ingress:
+  enabled: true
+  className: nginx
+  path: /oauth2
+  pathType: Prefix
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: >-
+      http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/auth
+    nginx.ingress.kubernetes.io/auth-signin: >-
+      http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/start?rd=$request_uri
+  hosts:
+    - a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com
+
