@@ -2,9 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "flask-app.fullname" . }}
+  name: {{ include "keyclock-app.fullname" . }}
   labels:
-    {{- include "flask-app.labels" . | nindent 4 }}
+    {{- include "keyclock-app.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -37,7 +37,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ include "flask-app.fullname" $ }}
+                name: {{ include "keyclock-app.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}

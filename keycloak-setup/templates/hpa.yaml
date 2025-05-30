@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "flask-app.fullname" . }}
+  name: {{ include "keyclock-app.fullname" . }}
   labels:
-    {{- include "flask-app.labels" . | nindent 4 }}
+    {{- include "keyclock-app.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "flask-app.fullname" . }}
+    name: {{ include "keyclock-app.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
