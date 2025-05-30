@@ -64,5 +64,8 @@ readinessProbe:
 metrics:
   enabled: false
   
+autoscaling:
+  enabled: false
+  
 serviceAccount:
   create: true
