@@ -20,14 +20,20 @@ service:
 
 ingress:
   enabled: true
-  className: nginx
+  className: alb
   path: /oauth2
   pathType: Prefix
   annotations:
-    nginx.ingress.kubernetes.io/auth-url: >-
-      http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/auth
-    nginx.ingress.kubernetes.io/auth-signin: >-
-      http://a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com/oauth2/start?rd=$request_uri
+    "alb.ingress.kubernetes.io/actions.ssl-redirect.type": "redirect"
+    "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:eu-west-1:297071026656:certificate/b368021d-cc49-44b0-b471-c4f63b1d6d29"
+    "alb.ingress.kubernetes.io/group.name": "datavisyn-test-eks"
+    "alb.ingress.kubernetes.io/healthcheck-protocol": "HTTP"
+    "alb.ingress.kubernetes.io/listen-ports": '[{"HTTP":80},{"HTTPS":443}]'
+    "alb.ingress.kubernetes.io/scheme": "internet-facing"
+    "alb.ingress.kubernetes.io/security-groups": "sg-0a40c3fb9984685c7,sg-0835829910c38d499"
+    "alb.ingress.kubernetes.io/ssl-redirect": "443"
+    "alb.ingress.kubernetes.io/subnets": "subnet-069367606b8060556,subnet-04c8dd2c131b4ffdc,subnet-04b2c5c5a86c07bda"
+    "alb.ingress.kubernetes.io/target-type": "ip"
   hosts:
-    - a6d28e0f6077b4787a7dd5985ab1c316-231441080.eu-west-1.elb.amazonaws.com
+    - oauth.datavisyn.pro
 
