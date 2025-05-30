@@ -40,9 +40,9 @@ ingress:
     alb.ingress.kubernetes.io/healthcheck-protocol: "HTTP"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
     alb.ingress.kubernetes.io/scheme: "internet-facing"
-    alb.ingress.kubernetes.io/security-groups: "sg-0a40c3fb9984685c7,sg-0835829910c38d499"
+    alb.ingress.kubernetes.io/security-groups: "sg-098eddc7f2cba9552,sg-0835829910c38d499"
     alb.ingress.kubernetes.io/ssl-redirect: "443"
-    "alb.ingress.kubernetes.io/subnets": "subnet-09369a52f175cfc67,subnet-03b7d9a6422c0a350,subnet-0abd28689a34bcbb9"
+    alb.ingress.kubernetes.io/subnets: "subnet-09369a52f175cfc67,subnet-03b7d9a6422c0a350,subnet-0abd28689a34bcbb9"
     alb.ingress.kubernetes.io/target-type: "ip"
   hosts:
     - host: app.datavisyn.pro
