@@ -63,4 +63,6 @@ readinessProbe:
 
 metrics:
   enabled: false
-
+  
+serviceAccount:
+  create: true
