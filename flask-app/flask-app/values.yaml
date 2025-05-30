@@ -42,7 +42,7 @@ ingress:
     alb.ingress.kubernetes.io/scheme: "internet-facing"
     alb.ingress.kubernetes.io/security-groups: "sg-0a40c3fb9984685c7,sg-0835829910c38d499"
     alb.ingress.kubernetes.io/ssl-redirect: "443"
-    alb.ingress.kubernetes.io/subnets: "subnet-069367606b8060556,subnet-04c8dd2c131b4ffdc,subnet-0af61a14ee5b627d4"
+    alb.ingress.kubernetes.io/subnets: "subnet-069367606b8060556,subnet-04c8dd2c131b4ffdc,subnet-04b2c5c5a86c07bda"
     alb.ingress.kubernetes.io/target-type: "ip"
   hosts:
     - host: app.datavisyn.pro
